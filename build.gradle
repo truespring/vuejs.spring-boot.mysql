@@ -2,14 +2,75 @@ plugins {
   id 'org.springframework.boot' version '2.7.3'
   id 'io.spring.dependency-management' version '1.0.13.RELEASE'
   id 'java'
+  id "com.github.node-gradle.node" version "3.4.0"
 }
 
 group = 'com.taskagile'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+println "### project.projectDir: ${project.projectDir}"
+
+node {
+  download = true
+  version = "18.7.0"
+  npmVersion = "6.14.15"
+  distBaseUrl = "https://nodejs.org/dist"
+  allowInsecureProtocol = null
+  npmInstallCommand = "install"
+  workDir = file("${project.projectDir}/.gradle/nodejs")
+  npmWorkDir = file("${project.projectDir}/.gradle/npm")
+  nodeProjectDir = file("./front-end")
+  nodeProxySettings = ProxySettings.SMART
+}
+
+task setUp(type: NpmTask) {
+  description = "Install Node.js Packages"
+  args = ['install']
+}
+
+task testSetUp(type: NpmTask) {
+  description = "Install unit test Packages"
+  args = ['run', 'test:unit']
+}
+
+task deleteVueBuildFiles(type: Delete) {
+  delete "src/main/resources/static", "src/main/resources/static/index.html", "${project.projectDir}/front-end/node_modules"
+}
+
+task buildFrontEnd(type: NpmTask, dependsOn: ['deleteVueBuildFiles', 'setUp', 'testSetUp']) {
+  description = "build Vue"
+  args = ['run', 'build']
+}
+
+task e2eSetUp(type: NpmTask) {
+  description = "Integration Test e2e"
+  args = ['run', 'test:e2e']
+}
+
+processResources.dependsOn 'buildFrontEnd'
+
+//sourceSets {
+//  main {
+//    resources {
+//      srcDirs "front-end/dist", "src/main/resources/templates"
+//      include "index.html"
+//
+//      srcDirs "front-end/dist", "src/main/resources/static"
+//      exclude "index.html"
+//    }
+//  }
+//}
+
+configurations {
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
 repositories {
   mavenCentral()
+  gradlePluginPortal()
 }
 
 dependencies {
@@ -19,9 +80,11 @@ dependencies {
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-
   runtimeOnly 'mysql:mysql-connector-java'
 }
+
+apply plugin: 'com.github.node-gradle.node'
+
 
 tasks.named('test') {
   useJUnitPlatform()
