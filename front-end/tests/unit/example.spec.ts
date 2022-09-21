@@ -15,11 +15,10 @@ import LoginPage from '@/views/LoginPage.vue'
 
 describe('LoginPage.vue', () => {
   it('should render correct contents', () => {
-    const content = 'TaskAgile'
-    const wrapper = shallowMount(LoginPage, {
+    const content: String = 'TaskAgile'
+    const wrapper: any = shallowMount(LoginPage, {
       props: { content }
     })
-    // @ts-ignore
     expect(wrapper.element.querySelector('h1').textContent).toEqual(content)
   })
 })

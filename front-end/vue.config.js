@@ -15,19 +15,13 @@ module.exports = {
       }
     }
   },
-  // build: {
-  //   index: path.resolve(__dirname, '../src/main/resources/static'),
-  //   assetsRoot: path.resolve(__dirname, '../src/main/resources/static'),
-  //   assetsSubDirectory: 'static',
-  //   assetsPublicPath: '/',
-  //
-  //   productionSourceMap: true,
-  //   devtool: '#source-map',
-  //
-  //   productionGzip: false,
-  //   productionGzipExtensions: ['js', 'css'],
-  //
-  //   bundleAnalyzerReport: process.env.npm_config_repot
-  // }
+  configureWebpack: {
+    entry: {
+      app: './src/main.ts',
+      style: [
+        'bootstrap/dist/css/bootstrap.min.css'
+      ]
+    }
+  }
 }
 

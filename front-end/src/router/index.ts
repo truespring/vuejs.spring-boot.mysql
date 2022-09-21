@@ -24,14 +24,19 @@
 //
 // export default router
 
-import { defineComponent } from 'vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LoginPage from '@/views/LoginPage.vue'
+import RegisterPage from '@/views/RegisterPage.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'LoginPage',
     component: LoginPage
+  },
+  {
+    path: '/register',
+    name: 'RegisterPage',
+    component: RegisterPage
   }
 ]
 const router = createRouter({

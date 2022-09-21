@@ -35,7 +35,7 @@ task testSetUp(type: NpmTask) {
 }
 
 task deleteVueBuildFiles(type: Delete) {
-  delete "src/main/resources/static", "src/main/resources/static/index.html", "${project.projectDir}/front-end/node_modules"
+  delete "src/main/resources/static/static", "src/main/resources/static/index.html", "${project.projectDir}/front-end/node_modules"
 }
 
 task buildFrontEnd(type: NpmTask, dependsOn: ['deleteVueBuildFiles', 'setUp', 'testSetUp']) {
