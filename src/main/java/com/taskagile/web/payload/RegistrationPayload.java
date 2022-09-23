@@ -16,8 +16,9 @@ public class RegistrationPayload {
   @NotNull
   private String username;
 
-  @Email(message = "Email address should be vaild")
+  @Email(message = "Email address should be valid")
   @Size(max = 100, message = "Email address must not be more than 100 characters")
+  @NotNull
   private String emailAddress;
 
   @Size(min = 6, max = 30, message = "Password mush be between 6 and 30 characters")
