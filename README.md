@@ -31,3 +31,8 @@ $ npm intall -g @vue/cli
 $ vue create front-end
 ```
 ![img.png](images/img.png)
+
+
+## 참고
+
+- [vuejs test](https://velog.io/@tkppp-dev/TaskAgile-VTU%EC%99%80-Jest%EB%A5%BC-%ED%86%B5%ED%95%B4)

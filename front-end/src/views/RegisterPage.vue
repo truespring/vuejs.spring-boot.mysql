@@ -6,7 +6,8 @@
           <img class="logo" src="/static/images/logo.png">
           <div class="tagline">Open source task management tool</div>
         </div>
-        <form @sumbit.prevent="submitForm">
+        <form @submit.prevent="submitForm">
+          <div v-show="errorMessage" class="alert alert-danger failed">{{ errorMessage }}</div>
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" v-model="form.username">
@@ -24,13 +25,22 @@
       </div>
     </div>
     <footer class="footer">
-      <span class="copyright"></span>
-      <ul class="footer-links list-inline float-right"></ul>
+      <span class="copyright">&copy; 2022 TaskAgile.com</span>
+      <ul class="footer-links list-inline float-right">
+        <li class="list-inline-item"><a href="#">About</a></li>
+        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        <li class="list-inline-item"><a href="https://github.com/truespring/vuejs.spring-boot.mysql" target="_blank">GitHub</a>
+        </li>
+        <ul class="footer-links list-inline float-right"></ul>
+      </ul>
     </footer>
   </div>
 </template>
 
 <script>
+import registrationService from '@/services/registration'
+
 export default {
   name: 'RegisterPage',
   data: function () {
@@ -39,13 +49,64 @@ export default {
         username: '',
         emailAddress: '',
         password: ''
-      }
+      },
+      errorMessage: ''
     }
   },
   methods: {
     submitForm () {
-      this.$v.$touch()
+      registrationService.register(this.form).then(() => {
+        this.$router.push({ name: 'LoginPage' })
+      }).catch((error) => {
+        this.errorMessage = 'Failed to register user. Reason: ' +
+          (error.message ? error.message : 'Unknown') + '.'
+      })
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  max-width: 900px;
+}
+.register-form {
+  margin-top: 50px;
+  max-width: 320px;
+}
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 40px;
+  .tagline {
+    line-height: 180%;
+    color: #666;
+  }
+  .logo {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+}
+.register-form {
+  .form-group label {
+    font-weight: bold;
+    color: #555;
+  }
+  .accept-terms {
+    margin: 20px 0 40px 0;
+  }
+}
+.footer {
+  width: 100%;
+  font-size: 13px;
+  color: #666;
+  line-height: 40px;
+  border-top: 1px solid #ddd;
+  margin-top: 50px;
+  .list-inline-item {
+    margin-right: 10px;
+  }
+  a {
+    color: #666;
+  }
+}
+</style>
