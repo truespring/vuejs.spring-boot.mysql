@@ -36,3 +36,4 @@ $ vue create front-end
 ## 참고
 
 - [vuejs test](https://velog.io/@tkppp-dev/TaskAgile-VTU%EC%99%80-Jest%EB%A5%BC-%ED%86%B5%ED%95%B4)
+- [Spring Security 변경사항](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)
