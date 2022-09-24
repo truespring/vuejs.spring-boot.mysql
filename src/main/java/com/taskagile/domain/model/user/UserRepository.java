@@ -1,8 +1,9 @@
 package com.taskagile.domain.model.user;
 
-public interface UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 
   User findByUsername(final String username);
   User findByEmailAddress(final String emailAddress);
-  void save(final User user);
 }

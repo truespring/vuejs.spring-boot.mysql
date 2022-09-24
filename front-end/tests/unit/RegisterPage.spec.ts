@@ -1,5 +1,5 @@
 import RegisterPage from '@/views/RegisterPage.vue'
-import {mount, shallowMount} from "@vue/test-utils";
+import { mount } from '@vue/test-utils'
 
 jest.mock('@/services/registration')
 // describe('RegisterPage.vue', () => {
@@ -24,7 +24,7 @@ describe('RegisterPage.vue', () => {
     wrapper = mount(RegisterPage, {
       global: {
         mocks: {
-          $router: mockRouter,
+          $router: mockRouter
         }
       }
     })
@@ -45,13 +45,13 @@ describe('RegisterPage.vue', () => {
     expect(fieldEmailAddress.element.value).toEqual('')
     expect(fieldPassword.element.value).toEqual('')
     expect(buttonSubmit.text()).toEqual('Create account')
-  });
+  })
 
   it('should contain data model with initial values', () => {
     expect(wrapper.vm.form.username).toEqual('')
     expect(wrapper.vm.form.emailAddress).toEqual('')
     expect(wrapper.vm.form.password).toEqual('')
-  });
+  })
 
   it('should have form inputs bound with data model', async () => {
     const username = 'rubok'
@@ -65,14 +65,14 @@ describe('RegisterPage.vue', () => {
     expect(wrapper.vm.form.username).toEqual(username)
     expect(wrapper.vm.form.emailAddress).toEqual(emailAddress)
     expect(wrapper.vm.form.password).toEqual(password)
-  });
+  })
 
   it('should have form submit event handler `submitForm`', async () => {
     const spyFn = jest.spyOn(wrapper.vm, 'submitForm')
 
     await buttonSubmit.trigger('submit')
     expect(spyFn).toBeCalled()
-  });
+  })
 
   it('should register when it is a new user', async () => {
     wrapper.vm.form.username = 'rubok'
@@ -80,12 +80,12 @@ describe('RegisterPage.vue', () => {
     wrapper.vm.form.password = 'VueJsRocks!'
     await buttonSubmit.trigger('submit')
     expect(mockRouter.push).toHaveBeenCalledWith({ name: 'LoginPage' })
-  });
+  })
 
   it('should fail it is not a new user', async () => {
     wrapper.vm.form.emailAddress = 'truespring1@gmail.com'
     expect(wrapper.find('.failed').isVisible()).toBe(false)
     await buttonSubmit.trigger('submit')
     expect(wrapper.find('.failed').isVisible()).toBe(true)
-  });
+  })
 })

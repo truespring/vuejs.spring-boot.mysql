@@ -23,7 +23,6 @@ public class RegistrationManagement {
     }
 
     String encryptedPassword = passwordEncryptor.encrypt(password);
-    User newUser = User.create(username, emailAddress.toLowerCase(), encryptedPassword);
-    return newUser;
+    return User.create(username, emailAddress.toLowerCase(), encryptedPassword);
   }
 }

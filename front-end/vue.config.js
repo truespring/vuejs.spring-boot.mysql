@@ -4,8 +4,8 @@
 // })
 
 module.exports = {
-  outputDir: "../src/main/resources/static",
-  indexPath: "../templates/index.html",
+  outputDir: '../src/main/resources/static',
+  indexPath: '../templates/index.html',
   devServer: {
     port: 3000,
     proxy: {
@@ -24,4 +24,3 @@ module.exports = {
     }
   }
 }
-

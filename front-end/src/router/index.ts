@@ -27,6 +27,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LoginPage from '@/views/LoginPage.vue'
 import RegisterPage from '@/views/RegisterPage.vue'
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',

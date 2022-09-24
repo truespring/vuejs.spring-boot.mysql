@@ -15,7 +15,7 @@ import LoginPage from '@/views/LoginPage.vue'
 
 describe('LoginPage.vue', () => {
   it('should render correct contents', () => {
-    const content: String = 'TaskAgile'
+    const content = 'TaskAgile'
     const wrapper: any = shallowMount(LoginPage, {
       props: { content }
     })

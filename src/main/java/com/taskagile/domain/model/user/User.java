@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Getter
 public class User extends AbstractBaseEntity {
 
