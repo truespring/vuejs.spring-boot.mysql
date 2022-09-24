@@ -1,5 +1,6 @@
 package com.taskagile.web.apis;
 
+import com.taskagile.config.SecurityConfiguration;
 import com.taskagile.domain.application.UserService;
 import com.taskagile.domain.model.user.UsernameExistsException;
 import com.taskagile.utils.JsonUtils;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.doThrow;
@@ -16,7 +19,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(RegistrationApiController.class)
+@WebMvcTest
+@ContextConfiguration(classes = {SecurityConfiguration.class, RegistrationApiController.class})
+@ActiveProfiles("test")
 class RegistrationApiControllerTests {
 
   @Autowired
