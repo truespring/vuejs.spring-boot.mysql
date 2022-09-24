@@ -23,7 +23,7 @@ public class RegistrationApiController {
 
   @PostMapping("/api/registrations")
   public ResponseEntity<ApiResult> register(
-    @Valid @RequestBody RegistrationPayload payload) {
+    @Valid @RequestBody final RegistrationPayload payload) {
     try {
       service.register(payload.toCommand());
       return Result.created();

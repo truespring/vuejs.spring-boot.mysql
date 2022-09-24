@@ -15,15 +15,15 @@ public class ApiResult extends HashMap<String, Object> {
     return new ApiResult();
   }
 
-  public static ApiResult message(String message) {
+  public static ApiResult message(final String message) {
     Assert.hasText(message, "Parameter `message` must not be blank");
 
     ApiResult apiResult = new ApiResult();
-    apiResult.put("message", message);
+    apiResult.put(MESSAGE_KEY, message);
     return apiResult;
   }
 
-  public static ApiResult error(String message, String errorReferenceCode) {
+  public static ApiResult error(final String message, final String errorReferenceCode) {
     Assert.hasText(message, "Parameter `message` must not be blank");
     Assert.hasText(errorReferenceCode, "Parameter `errorReferenceCode` must not be blank");
 
@@ -33,7 +33,7 @@ public class ApiResult extends HashMap<String, Object> {
     return apiResult;
   }
 
-  public ApiResult add(String key, Object value) {
+  public ApiResult add(final String key, final Object value) {
     Assert.hasText(key, "Parameter `key` must not be blank");
     Assert.notNull(value, "Parameter `value` must not be null");
 

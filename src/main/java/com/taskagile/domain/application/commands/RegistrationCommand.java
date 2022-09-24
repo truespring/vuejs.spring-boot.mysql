@@ -7,11 +7,11 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class RegistrationCommand {
 
-  private String username;
-  private String emailAddress;
-  private String password;
+  private final String username;
+  private final String emailAddress;
+  private final String password;
 
-  public RegistrationCommand(String username, String emailAddress, String password) {
+  public RegistrationCommand(final String username, final String emailAddress, final String password) {
     this.username = username;
     this.emailAddress = emailAddress;
     this.password = password;

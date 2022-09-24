@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 public final class JsonUtils {
 
-  public static String toJson(Object object) {
+  public static String toJson(final Object object) {
     ObjectMapper mapper = new ObjectMapper();
     try {
       return mapper.writeValueAsString(object);

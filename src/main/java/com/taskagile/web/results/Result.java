@@ -16,23 +16,23 @@ public final class Result {
     return ResponseEntity.ok().build();
   }
 
-  public static ResponseEntity<ApiResult> ok(String message) {
+  public static ResponseEntity<ApiResult> ok(final String message) {
     Assert.hasText(message, "Parameter `message` must not be blank");
 
     return ok(ApiResult.message(message));
   }
 
-  public static ResponseEntity<ApiResult> ok(ApiResult payload) {
+  public static ResponseEntity<ApiResult> ok(final ApiResult payload) {
     Assert.notNull(payload, "Parameter `payload` must not be null");
 
     return ResponseEntity.ok(payload);
   }
 
-  public static ResponseEntity<ApiResult> failure(String message) {
+  public static ResponseEntity<ApiResult> failure(final String message) {
     return ResponseEntity.badRequest().body(ApiResult.message(message));
   }
 
-  public static ResponseEntity<ApiResult> serverError(String message, String errorReferenceCode) {
+  public static ResponseEntity<ApiResult> serverError(final String message, final String errorReferenceCode) {
     return ResponseEntity.status(500).body(ApiResult.error(message, errorReferenceCode));
   }
 
