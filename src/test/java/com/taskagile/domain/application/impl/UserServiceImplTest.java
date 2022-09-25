@@ -16,6 +16,7 @@ class UserServiceImplTest {
   private RegistrationManagement registrationManagementMock;
   private DomainEventPublisher eventPublisherMock;
   private MailManager mailManagerMock;
+  private UserRepository repositoryMock;
   private UserServiceImpl instance;
 
   @BeforeEach
@@ -23,7 +24,8 @@ class UserServiceImplTest {
     registrationManagementMock = mock(RegistrationManagement.class);
     eventPublisherMock = mock(DomainEventPublisher.class);
     mailManagerMock = mock(MailManager.class);
-    instance = new UserServiceImpl(registrationManagementMock, eventPublisherMock, mailManagerMock);
+    repositoryMock = mock(UserRepository.class);
+    instance = new UserServiceImpl(registrationManagementMock, eventPublisherMock, mailManagerMock, repositoryMock);
   }
 
   @Test

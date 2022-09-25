@@ -4,29 +4,21 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.H2Dialect
-
   config:
     activate:
       on-profile: test
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail:
+        smtp:
+          auth: false
 
-#spring:
-#  config:
-#    activate:
-#      on-profile: test
-#  h2:
-#    console:
-#      enabled: true
-#  jpa:
-#    database: h2
-#    generate-ddl: off
-#  datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:mem:taskagile;MODE=MySQL;
-#    username: SA
-#    password:
+app:
+  mail-from: ktf2171@gmail.com

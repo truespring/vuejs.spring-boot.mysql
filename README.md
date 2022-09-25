@@ -37,3 +37,15 @@ $ vue create front-end
 
 - [vuejs test](https://velog.io/@tkppp-dev/TaskAgile-VTU%EC%99%80-Jest%EB%A5%BC-%ED%86%B5%ED%95%B4)
 - [Spring Security 변경사항](https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter)
+
+
+## Java Mail
+
+```shell
+# 파이썬 메일 라이브러리를 사용한다.
+$ python3.9 -m smtpd -n -c DebuggingServer localhost:1025
+```
+
+### 주의사항
+
+- yml 파일에 host, port 등의 설정이 필요함

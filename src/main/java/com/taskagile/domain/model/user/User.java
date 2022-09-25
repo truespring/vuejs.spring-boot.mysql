@@ -2,7 +2,6 @@ package com.taskagile.domain.model.user;
 
 import com.taskagile.domain.common.model.AbstractBaseEntity;
 import lombok.Getter;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Date;

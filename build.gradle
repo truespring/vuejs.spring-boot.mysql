@@ -94,9 +94,17 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-security'
   testImplementation 'org.springframework.security:spring-security-test'
 
+  annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+
+  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
+  implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.4'
+
+  // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-freemarker
+  implementation 'org.springframework.boot:spring-boot-starter-freemarker:2.7.4'
+
   // https://mvnrepository.com/artifact/com.h2database/h2
   testImplementation 'com.h2database:h2:2.1.214'
-
 
 
 }

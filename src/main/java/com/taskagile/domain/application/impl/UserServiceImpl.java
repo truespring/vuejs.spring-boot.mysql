@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
   private final DomainEventPublisher domainEventPublisher;
   private final MailManager mailManager;
   private final UserRepository userRepository;
+
   @Override
   public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
     if (username.isEmpty()) {
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     sendWelcomeMessage(newUser);
     domainEventPublisher.publish(new UserRegisteredEvent(newUser));
-    log.info("Check encryped password {}", newUser.getPassword());
+    log.info("Check encrypted password {}", newUser.getPassword());
     userRepository.save(newUser);
   }
 
